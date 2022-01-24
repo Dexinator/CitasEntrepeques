@@ -1,0 +1,80 @@
+@import java.time.format.DateTimeFormatter
+
+@(event: models.Event, location: models.Location, products: Seq[(models.Product, models.Category)], dateFormatter: DateTimeFormatter, timeFormatter: DateTimeFormatter, appUrl: String)(implicit request: RequestHeader)
+
+@email {
+  <section class="pure-g" style='display:block;letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start;word-spacing:-.43em;color: #363636;'>
+    <div class="pure-u-1" style="display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto;width:100%;font-family:sans-serif;">
+      <div style="margin: 0 auto; padding: 1rem; text-align: center;">
+        <h2>Se ha cancelado la siguiente cita</h2>
+        <h3>
+          @{event.start.toLocalDate.format(dateFormatter)} de
+          @{event.start.toLocalTime.format(timeFormatter)} a
+          @{event.start.toLocalTime.plus(event.duration).format(timeFormatter)}
+        </h3>
+        <h4>Información de la Cita</h4>
+        <table class="pure-table pure-table-horizontal pure-table-striped" style="border-collapse:collapse;border-spacing:0;empty-cells:show; border:1px solid #cbcbcb; margin: 0 auto;">
+          <tbody>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Nombre Completo
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{event.contactName}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;font-weight: 500;">
+                Correo Electrónico de Contacto
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;">
+                @{event.contactEmail}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Teléfono de Contacto
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{event.contactPhone}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Sucursal
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{location.name}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Dirección
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{location.address}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;font-weight: 500;">
+                Fecha de la Cita
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;">
+                @{event.start.toLocalDate.format(dateFormatter)}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;border-bottom-width:0;font-weight: 500;">
+                Horario
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;border-bottom-width:0;">
+                @{event.start.toLocalTime.format(timeFormatter)} -
+                @{event.start.toLocalTime.plus(event.duration).format(timeFormatter)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+}

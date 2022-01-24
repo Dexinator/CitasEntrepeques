@@ -1,0 +1,40 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET     /events                         controllers.EventController.allEvents()
+GET     /events/range                   controllers.EventController.allEventsInRange(start: String, end: String, timeZone: Option[String])
+GET     /events/range/location          controllers.EventController.allEventsInRangeWithLocation(start: String, end: String, timeZone: Option[String])
+GET     /events-short                   controllers.EventController.allEventsShort()
+GET     /events-short/range/location    controllers.EventController.allEventsShortInRangeWithLocation(start: String, end: String, timeZone: Option[String])
+
+GET     /business-hours                 controllers.LocationController.allBusinessHours()
+GET     /locations                      controllers.LocationController.allLocations()
+GET     /locations/business-hours       controllers.LocationController.allBusinessHoursWithLocation()
+
+POST    /appointments       controllers.MailController.saveAppointment()
+GET     /cancel-appointment controllers.MailController.cancelAppointment(id: models.EventId)
+GET     /cancelar-cita      controllers.MailController.cancelAppointment(id: models.EventId)
+GET     /confirmar-cita     controllers.MailController.verifyAppointment(id: models.EventId)
+GET     /verify-appointment controllers.MailController.verifyAppointment(id: models.EventId)
+
+POST    /apply-migrations   controllers.MigrationsController.applyMigrations()
+
+GET     /notificacion                     controllers.NotificationController.getNotification()
+GET     /notification                     controllers.NotificationController.getNotification()
+POST    /cambiar-notificacion           controllers.NotificationController.changeNotification()
+POST    /change-notification            controllers.NotificationController.changeNotification()
+
+GET     /categories         controllers.ProductController.allCategories()
+PATCH   /category-options   controllers.ProductController.updateCategory()
+GET     /collections        controllers.ProductController.allCollection()
+POST    /products/event     controllers.ProductController.productsForEvent()
+POST    /download-csv       controllers.ProductController.allEventsWithInfomrationInCSV()
+
+POST    /authorize          controllers.PasswordController.authorize()
+POST    /cambiar-contraseña controllers.PasswordController.changePassword()
+POST    /change-password    controllers.PasswordController.changePassword()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)

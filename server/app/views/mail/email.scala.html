@@ -1,0 +1,21 @@
+@*
+ * This template handles the rendering of the page header and body tags.
+ * It takes two arguments, a `String` for the title of the page and
+ * an `Html` object to insert into the body of the page.
+ *@
+@(content: Html)
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://unpkg.com/purecss@@1.0.1/build/pure-nr-min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    @content
+  </body>
+
+</html>

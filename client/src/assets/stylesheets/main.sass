@@ -1,0 +1,150 @@
+@charset "utf-8"
+
+$dimensions: 16 24 32 48 64 96 128 256
+$family-sans-serif: Montserrat, Helvetica, Arial, sans-serif
+$input-placeholder-color: hsl(0, 0%, 48%) /* Default gray */
+$primary: #009AD7
+$info: lighten(#00A92F, 50%)
+$scrollbar-spacing: 0.4em
+
+@import "bulma"
+@import "buefy/src/scss/buefy"
+@import "fc_bulma.sass"
+@import "@creativebulma/bulma-divider/src/sass/index"
+
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  .has-border-#{$name}
+    border-color: $color !important
+
++mobile
+  .carousel:not(:last-child)
+    margin-bottom: 1.5rem
+  .carousel-list>.carousel-slides
+    transform: none !important
+    flex-direction: column
+    &>.carousel-slide
+      max-width: 400px
+      margin: 0 auto
+      width: 100% !important
+      &:not(:last-child)
+        margin-bottom: 1rem
+
++desktop
+  nav.navbar.is-spaced+section.hero
+    &.is-fullheight,
+    &.is-fullheight-with-navbar
+        min-height: calc(100vh - #{$navbar-height + ($navbar-padding-vertical * 2)})
+
+#app .field.is-floating-label .label::before
+  background-color: transparent
+
+p.help.is-warning,
+span.help.is-warning
+  color: $warning-dark
+
+section.hero
+  &.is-fullheight,
+  &.is-fullheight-with-navbar
+    &.is-aligned-top .hero-body
+      align-items: flex-start
+
+table.table tr
+  td,
+  th
+    cursor: default
+    vertical-align: middle
+
+.b-slider .b-slider-tick .b-slider-tick-label
+  line-height: 1em
+  margin-top: 0.4em
+
+.bordered
+  border: 1px solid $black
+
+.box.is-rounded
+  border-radius: $radius-rounded
+
+.button-spacing
+  @extend %control
+  border-width: $button-border-width
+  padding-bottom: $button-padding-vertical
+  padding-left: $button-padding-horizontal
+  padding-right: $button-padding-horizontal
+  padding-top: $button-padding-vertical
+
+.carousel-item-overlay
+  align-items: center
+  background: rgba($black, 0.25)
+  display: flex
+  height: 100%
+  position: absolute
+  top: 0
+  width: 100%
+  .columns
+    flex-grow: 1
+    flex-shrink: 1
+
+.carousel-list .carousel-slides .carousel-slide
+  display: flex
+
+.control
+  &.has-icons-left,
+  &.has-icons-right
+    .input.textarea ~ span.icon
+      top: $scrollbar-spacing
+    .select:focus-within ~ .icon
+      color: $input-icon-active-color
+  &.has-icons-right .input
+    @each $name, $pair in $colors
+      $color: nth($pair, 1)
+      &.is-#{$name}
+        &:not(:focus) ~ span.icon:last-child
+          color: lighten($color, 25%) !important
+    &.textarea
+      padding-right: $input-height + $scrollbar-spacing
+      & ~ span.icon.is-right
+        right: $scrollbar-spacing
+
+.divider.is-full
+  &::after
+    margin-left: 0
+  &::before
+    margin-right: 0
+
+.field.with-slider
+  margin-bottom: 2rem
+  &.is-floating-label
+    margin-top: 2rem
+    .label
+      top: -1.75em
+
+.b-slider.is-medium
+  margin-bottom: 1.5em
+  .b-slider-tick .b-slider-tick-label
+    top: calc(#{$size-medium / $slider-thumb-to-track-ratio * $slider-tick-to-track-ratio} / 2 + 8px)
+
+.image
+  &:not(:last-child)
+    margin-bottom: 1.5rem
+  &.is-5by2,
+  &.is-4by1
+    img,
+    .has-ratio
+      @extend %overlay
+      height: 100%
+      width: 100%
+  &.is-4by1
+    padding-top: 25%
+  &.is-5by2
+    padding-top: 40%
+
+.level-item
+  .subtitle,
+  .title
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+
+.mx-auto
+  margin-left: auto !important
+  margin-right: auto !important

@@ -1,0 +1,42 @@
+$background-event-color: $info !default
+$today-background-color: $primary !default
+$event-background-color: $info !default
+$event-text-color: $info-invert !default
+$calendar-text-color: $dark !default
+
+.fc.fc-theme-bulma
+  .fc-bg-event
+    background-color: rgba($background-event-color, 0.8)
+    color: rgba($background-event-color, 0.8)
+  .fc-daygrid-day.fc-day-today
+    background-color: rgba($today-background-color, 0.2)
+  .buttons
+    display: inline-flex
+    +tablet
+      justify-content: center
+    .button
+      border-radius: 0
+      &:not(.is-fullwidth)
+        margin-right: 0
+  .fc-h-event
+    border-color: $event-background-color
+    background-color: $event-background-color
+    .fc-event-main
+      color: $event-text-color
+  .fc-toolbar-title
+    margin-left: 1rem
+    margin-right: 1rem
+    min-width: 100px
+    +tablet
+      text-align: center
+  .table .fc-list-event td
+    padding: 8px 14px
+  .table
+    td,
+    th
+      padding: 0
+      vertical-align: top
+    th
+      text-align: center
+  a
+    color: $calendar-text-color

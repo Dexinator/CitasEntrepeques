@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/developer/Documents/Inferis/entrepeques_appointments/client/src"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/developer/Documents/Inferis/entrepeques_appointments/server/app"
+		}
+	]
+}

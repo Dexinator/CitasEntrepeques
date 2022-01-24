@@ -1,0 +1,161 @@
+{
+  "add": "Ingresar",
+  "addImage": "@:add imagen",
+  "acceptTerms": "Verifico que los datos son correctos",
+  "appointmentSummary": "Resumen de la cita",
+  "appointmentsNoneLeft": "No hay más citas por hoy",
+  "categories": {
+    "empty": "No existen más @.lower:categories.label",
+    "label": "Categorías",
+    "placeholder": "@:select @.lower:categories.label"
+  },
+  "categoryId": {
+    "label": "Categoría",
+    "placeholder": "@:select la @.lower:categoryId.label del producto"
+  },
+  "collection": {
+    "label": "Colección",
+    "placeholder": "@:select una @.lower:collection.label"
+  },
+  "contactEmail": {
+    "label": "Correo electrónico de contacto",
+    "placeholder": "@:add @.lower:contactEmail.label"
+  },
+  "contactInformation": "Información requerida",
+  "contactName": {
+    "label": "Nombre completo",
+    "placeholder": "@:add @.lower:contactName.label"
+  },
+  "contactPhone": {
+    "label": "Teléfono de contacto",
+    "placeholder": "@:add @.lower:contactPhone.label"
+  },
+  "dragFileToAdd": "Arrastre archivo para agregar",
+  "dragFileToChange": "Arrastre archivo para cambiar",
+  "eventDate": {
+    "label": "Fecha de la cita"
+  },
+  "eventInformation": "Selección de sucursal, fecha y hora",
+  "image": "Imagen",
+  "locationId": {
+    "label": "Sucursal",
+    "placeholder": "@:select una @.lower:locationId.label"
+  },
+  "password": {
+    "change": "Cambiar @:password.label",
+    "label": "Contraseña",
+    "new": "@:password.label Nueva",
+    "old": "@:password.label Anterior",
+    "placeholder": "@:add @.lower:password.label",
+    "repeat": "@:password.label Repetida"
+  },
+  "productInformation": "Selecciona los artículos que deseas vender",
+  "productName": {
+    "label": "Nombre del producto",
+    "placeholder": "@:add @.lower:productName.label"
+  },
+  "productQuality": {
+    "label": "Calidad de uso del producto",
+    "placeholder": "@:select una @.lower:productQuantity.label"
+  },
+  "productQuantity": {
+    "label": "Cantidad del producto"
+  },
+  "products": {
+    "empty": "Se requiere por lo menos un producto",
+    "invalidCategory": "Todos los productos deben tener una categoría seleccionada",
+    "invalidQuality": "Todos los productos deben tener una calidad de por lo menos \"@:Quality.2\"",
+    "tooFew": "El número de productos seleccionados no requiere una cita",
+    "tooMany": "Alcanzo el máximo número de productos para una cita; favor de eliminar alguno para continuar"
+  },
+  "select": "Seleccionar",
+  "submit": "Enviar",
+  "timeSlot": {
+    "label": "Horario"
+  },
+  "totalProducts": {
+    "label": "Número de productos",
+    "placeholder": "@:add @.lower:totalProducts.label"
+  },
+  "verifyDetails": "Verifique el resumen de la cita a continuación",
+  "ApparelQuantity": {
+    "1": "1-10",
+    "2": "11-40",
+    "3": "41-80",
+    "4": "81-120"
+  },
+  "Collections": {
+    "1": "De Paseo",
+    "2": "Hogar y Baño",
+    "3": "Electrónicos o Accesorios",
+    "4": "Entretenimiento",
+    "5": "Ropa",
+    "6": "Otros"
+  },
+  "Days": {
+    "0": "Do",
+    "1": "Lu",
+    "2": "Ma",
+    "3": "Mi",
+    "4": "Ju",
+    "5": "Vi",
+    "6": "Sa"
+  },
+  "Fields": {
+    "acceptTerms": "Verificar los datos como correctos",
+    "categories": "@:categories.label",
+    "categoryId": "@:categoryId.label",
+    "contactEmail": "@:contactEmail.label",
+    "contactName": "@:contactName.label",
+    "contactPhone": "@:contactPhone.label",
+    "eventDate": "@:eventDate.label",
+    "eventTimeSlot": "@:timeSlot.label",
+    "image": "@:image",
+    "locationId": "@:locationId.label",
+    "newPassword": "@:password.label nueva",
+    "notification": "Notificación",
+    "oldPassword": "@:password.label anterior",
+    "password": "@:password.label",
+    "productName": "@:productName.label",
+    "productQuantity": "@:productQuantity.label",
+    "repeatPassword": "@:password.label repetida",
+    "totalProducts": "@:totalProducts.label"
+  },
+  "Months": {
+    "0": "Enero",
+    "1": "Febrero",
+    "2": "Marzo",
+    "3": "Abril",
+    "4": "Mayo",
+    "5": "Junio",
+    "6": "Julio",
+    "7": "Agosto",
+    "8": "Septiembre",
+    "9": "Octubre",
+    "10": "Noviembre",
+    "11": "Diciembre"
+  },
+  "Quality": {
+    "1": "Bajo",
+    "2": "Bueno",
+    "3": "Excelente"
+  },
+  "ToyQuantity": {
+    "1": "1-2",
+    "2": "3-6",
+    "3": "7-12",
+    "4": "13-18"
+  },
+  "Validations": {
+    "confirmed": "{_field_} debe ser igual",
+    "email": "{_field_} debe ser una dirección de correo válida",
+    "imageMimes": "{_field_} debe ser un archivo de tipo imagen",
+    "maxValue": "{_field_} debe ser inferior a {length}",
+    "min": "{_field_} debe tener un tamaño mayor que {length}",
+    "minValue": "{_field_} debe ser mayor que {length}",
+    "notMatch": "{_field_} debe ser diferente a '{0}'",
+    "phone": "{_field_} debe ser un teléfono válido",
+    "required": "{_field_} es un campo obligatorio",
+    "size": "{_field_} debe pesar menos de {size} Kilobytes; intente con un archivo más pequeño"
+  }
+}

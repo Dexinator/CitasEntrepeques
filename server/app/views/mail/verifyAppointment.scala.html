@@ -1,0 +1,115 @@
+@import java.time.format.DateTimeFormatter
+
+@(eventId: models.EventId, appointment: models.Appointment, dateFormatter: DateTimeFormatter, timeFormatter: DateTimeFormatter, appUrl: String)(implicit request: RequestHeader)
+
+@email {
+  <section class="pure-g" style='display:block;letter-spacing:-.31em;text-rendering:optimizespeed;font-family:FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;-webkit-align-content:flex-start;-ms-flex-line-pack:start;align-content:flex-start;word-spacing:-.43em;color: #363636;'>
+    <div class="pure-u-1" style="display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto;width:100%;font-family:sans-serif;">
+      <div style="margin: 0 auto; padding: 1rem; text-align: center;">
+        <h2>¡Hola @{appointment.contactName}!</h2>
+        <h3>
+          Has creado una cita con Entrepeques. Revisa la siguiente información y confirma que creaste la cita.
+        </h3>
+        <h4>Información de la Cita</h4>
+        <table class="pure-table pure-table-horizontal pure-table-striped" style="border-collapse:collapse;border-spacing:0;empty-cells:show;border:1px solid #cbcbcb;margin: 0 auto;">
+          <tbody>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Sucursal
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{appointment.locationName}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;font-weight: 500;">
+                Dirección
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;">
+                @{appointment.locationAddress}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;font-weight: 500;">
+                Fecha de la Cita
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;background-color:#f2f2f2;">
+                @{appointment.start.toLocalDate.format(dateFormatter)}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;border-bottom-width:0;font-weight: 500;">
+                Horario
+              </td>
+              <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;border-width:0 0 1px 0;border-bottom:1px solid #cbcbcb;border-bottom-width:0;">
+                @{appointment.start.toLocalTime.format(timeFormatter)} -
+                @{appointment.start.toLocalTime.plus(appointment.duration).format(timeFormatter)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h4>Información de los Productos</h4>
+        <table class="pure-table" style="border-collapse:collapse;border-spacing:0;empty-cells:show;border:1px solid #cbcbcb;margin: 0 auto;">
+          @for((product, index) <- appointment.products.zipWithIndex) {
+            <tbody>
+              <tr>
+                <td rowspan="2" style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;">
+                  @if(product.image.isDefined) {
+                    <image width="96" height="96" src="cid:@index" />
+                  }
+                </td>
+                <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;">
+                  <span style="font-weight: 500;">Categoría:</span>
+                  @{product.categoryName}
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0;border-left:1px solid #cbcbcb;border-width:0 0 0 1px;font-size:inherit;margin:0;overflow:visible;padding:.5em 1em;background-color:transparent;">
+                  <span style="font-weight: 500;">Cantidad:</span>
+                  @{product.quantity}
+                </td>
+              </tr>
+            </tbody>
+          }
+        </table>
+        <h4>Información Importante</h4>
+        <p>
+          Para poder recibir ropa es importante que venga limpia, de marcas reconocidas y sin desgaste excesivo. Se recomienda lavarla antes de traerla.
+        </p>
+        <p>
+          Otros artículos verifique que estén completos, limpios y funcionando correctamente.
+        </p>
+        @if(appointment.products.exists(_.categoryId.value == 12)) {
+          <p>
+            Para poder recibir sillas de auto es importante que esten vigentes, ya que tienen un fecha de expiración; verifique esto antes de llevarlas.
+          </p>
+        }
+        @if(appointment.products.exists(_.collection == Collection.ElectronicsAndAccesories)) {
+          <p>
+            Para poder recibir electrónicos y accesorios es importante que tengan un funcionamiento correcto; verifique esto antes de llevarlos.
+          </p>
+        }
+        @if(appointment.products.exists(_.collection == Collection.Entertainment)) {
+          <p>
+            Para poder recibir productos de entretenimiento es importante que vengan completos y tengan un funcionamiento correcto; verifique esto antes de llevarlos.
+          </p>
+        }
+        <p>
+          Recuerda que tienes 12 horas para confirmar tu cita o se cancelará de forma automática.
+        </p>
+        <a href='@{appUrl}@{routes.MailController.verifyAppointment(eventId)}' style="background-color:transparent;color: #3273DC;">
+          Has click para verificar tu cita
+        </a>
+        <p>
+          o ve a la siguiente direccion <span style="color: #3273DC">@{appUrl}@{routes.MailController.verifyAppointment(eventId)}</span>
+        </p>
+        <a href='@{appUrl}@{routes.MailController.cancelAppointment(eventId)}' style="background-color:transparent;color: #3273DC;">
+          Si quieras cancelar la cita has click aqui
+        </a>
+        <p>
+          o ve a la siguiente dirección <span style="color: #3273DC">@{appUrl}@{routes.MailController.cancelAppointment(eventId)}</span>
+        </p>
+      </div>
+    </div>
+  </section>
+}

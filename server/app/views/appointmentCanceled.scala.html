@@ -1,0 +1,84 @@
+@import java.time.format.DateTimeFormatter
+
+@(event: models.Event, location: models.Location, dateFormatter: DateTimeFormatter, timeFormatter: DateTimeFormatter)(implicit request: RequestHeader)
+
+@main("Cancelación de Cita | Entrepeques.mx") {
+  <section class="hero is-info is-fullheight is-aligned-top">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">Se ha cancelado la siguiente cita</h1>
+        <h2 class="subtitle">
+          @{event.start.toLocalDate.format(dateFormatter)} de
+          @{event.start.toLocalTime.format(timeFormatter)} a
+          @{event.start.toLocalTime.plus(event.duration).format(timeFormatter)}
+        </h2>
+        <p class="content is-medium">Información de la Cita</p>
+        <div class="b-table">
+          <div class="table-wrapper has-mobile-cards mx-auto" style="max-width: 500px">
+            <table class="table is-bordered is-striped is-narrow">
+              <tbody>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Nombre Completo
+                  </td>
+                  <td>
+                    @{event.contactName}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Correo Electrónico de Contacto
+                  </td>
+                  <td>
+                    @{event.contactEmail}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Teléfono de Contacto
+                  </td>
+                  <td>
+                    @{event.contactPhone}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Sucursal
+                  </td>
+                  <td>
+                    @{location.name}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Dirección
+                  </td>
+                  <td>
+                    @{location.address}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Fecha de la Cita
+                  </td>
+                  <td>
+                    @{event.start.toLocalDate.format(dateFormatter)}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="has-text-weight-bold">
+                    Horario
+                  </td>
+                  <td>
+                    @{event.start.toLocalTime.format(timeFormatter)} -
+                    @{event.start.toLocalTime.plus(event.duration).format(timeFormatter)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
